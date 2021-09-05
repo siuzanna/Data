@@ -1,55 +1,60 @@
 import UIKit
+import TTGTags
 
 class Cell: UICollectionViewCell {
-
-    
     static var identifier: String = "Cell"
 
     weak var phoneNumber: UILabel!
     weak var name: UILabel!
-    weak var skills: UITextView!
+    let collectionView = TTGTextTagCollectionView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        contentView.backgroundColor = #colorLiteral(red: 0.3568639755, green: 0.2908577919, blue: 0.7719110847, alpha: 1)
+        contentView.layer.cornerRadius = 20
         
         let phoneNumber = UILabel(frame: .zero)
         let name = UILabel(frame: .zero)
-        let skills = UITextView(frame: .zero)
-        
         self.contentView.addSubview(phoneNumber)
         self.contentView.addSubview(name)
-        self.contentView.addSubview(skills)
-
-        name.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 30, left: 30, bottom: 0, right: 0), size: .zero)
-        phoneNumber.anchor(top: topAnchor, leading: name.trailingAnchor, bottom: nil, trailing: nil, padding: .init(top: 30, left: 30, bottom: 0, right: -30), size: .zero)
-        phoneNumber.textColor = .systemGreen
-        skills.anchor(top: name.bottomAnchor, leading: name.leadingAnchor, bottom: nil, trailing: phoneNumber.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .zero)
-//        skills.backgroundColor = .systemPink
-        skills.textColor = .gray
-        skills.isEditable = false
-        skills.isScrollEnabled = false
-        skills.font =  UIFont.systemFont(ofSize: 15)
-
+        self.contentView.addSubview(collectionView)
+        
+        //names
+        name.textAlignment = .left
+        name.font = UIFont.boldSystemFont(ofSize: 20.0)
+        name.textColor = .white
+        name.anchor(top: contentView.topAnchor,
+                    leading: contentView.leadingAnchor,
+                    bottom: phoneNumber.topAnchor,
+                    trailing: contentView.trailingAnchor,
+                    padding: .init(top: 40, left: 30, bottom: -2, right: -30), size: .init(width: contentView.frame.width-60, height: 16))
+        
+        //phone numbers
+        phoneNumber.textColor = .white
+        phoneNumber.font = UIFont.italicSystemFont(ofSize: 10.0)
+        phoneNumber.anchor(top: name.bottomAnchor,
+                                   leading: contentView.leadingAnchor,
+                                   bottom: collectionView.topAnchor,
+                                   trailing: contentView.trailingAnchor,
+                                   padding: .init(top: 0, left: 30, bottom: -20, right: -30), size: .init(width: contentView.frame.width-60, height: 14))
+        
+        //skills
+        collectionView.alignment = .fillByExpandingWidth
+        collectionView.anchor(top: phoneNumber.bottomAnchor,
+                           leading: contentView.leadingAnchor,
+                           bottom: contentView.bottomAnchor,
+                           trailing: contentView.trailingAnchor,
+                           padding: .init(top: 0, left: 30, bottom: -10, right: -30))
+        
         
         
         self.phoneNumber = phoneNumber
         self.name = name
-        self.skills = skills
-
         
-        self.reset()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.reset()
-    }
-
-    func reset() {
-        self.phoneNumber.textAlignment = .center
-    }
 }
