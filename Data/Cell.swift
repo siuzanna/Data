@@ -27,7 +27,7 @@ class Cell: UICollectionViewCell {
                     leading: contentView.leadingAnchor,
                     bottom: phoneNumber.topAnchor,
                     trailing: contentView.trailingAnchor,
-                    padding: .init(top: 40, left: 30, bottom: -2, right: -30), size: .init(width: contentView.frame.width-60, height: 16))
+                    padding: .init(top: 40, left: 30, bottom: 0, right: -30), size: .init(width: contentView.frame.width-60, height: 16))
         
         //phone numbers
         phoneNumber.textColor = .white

@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Network
 
 class NetworkErrorViewController: UIViewController {
-    
+    static var identifier = "NetworkErrorViewController"
+
     let someImageView: UIImageView = {
         let theImageView = UIImageView()
         theImageView.image = UIImage(named: "NoConnection.png")
@@ -16,20 +18,14 @@ class NetworkErrorViewController: UIViewController {
         return theImageView
     }()
     
-    static var identifier = "NetworkErrorViewController"
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .green
         view.addSubview(someImageView)
-        someImageView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
-
+        someImageView.fillSuperView()
     }
-    
-
-    override func viewWillDisappear(_ animated: Bool) {
-        
-    }
-   
-
+     
 }
+
+

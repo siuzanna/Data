@@ -24,6 +24,7 @@ struct Employee: Codable {
     let skills: [String]
 }
 
+
 var newsPosts: Welcome?
 
 func getMethod(complited: @escaping () -> ()) {

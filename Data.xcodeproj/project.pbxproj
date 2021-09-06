@@ -13,12 +13,11 @@
 		96678F5126E514480065D016 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96678F5026E514480065D016 /* Assets.xcassets */; };
 		96678F5426E514480065D016 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96678F5226E514480065D016 /* LaunchScreen.storyboard */; };
 		96678F6026E516200065D016 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96678F5F26E516200065D016 /* Cell.swift */; };
-		96678F6226E5165A0065D016 /* ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96678F6126E5165A0065D016 /* ViewCell.swift */; };
 		96678F6426E516860065D016 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96678F6326E516860065D016 /* Networking.swift */; };
 		96678F6626E5170B0065D016 /* Reacheability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96678F6526E5170B0065D016 /* Reacheability.swift */; };
 		96678F6926E5176B0065D016 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96678F6826E5176B0065D016 /* UIView.swift */; };
 		96678F6B26E5180F0065D016 /* NoInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96678F6A26E5180F0065D016 /* NoInternet.swift */; };
-		96678F6D26E582E40065D016 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96678F6C26E582E40065D016 /* Network.swift */; };
+		96787E5626E643660046CAA2 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96787E5526E643660046CAA2 /* BaseRouter.swift */; };
 		C722C346785E96FDEFBC27B0 /* Pods_Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 597607528978FC04522DFAC7 /* Pods_Data.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,12 +32,11 @@
 		96678F5326E514480065D016 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96678F5526E514480065D016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96678F5F26E516200065D016 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
-		96678F6126E5165A0065D016 /* ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCell.swift; sourceTree = "<group>"; };
 		96678F6326E516860065D016 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		96678F6526E5170B0065D016 /* Reacheability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reacheability.swift; sourceTree = "<group>"; };
 		96678F6826E5176B0065D016 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		96678F6A26E5180F0065D016 /* NoInternet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoInternet.swift; sourceTree = "<group>"; };
-		96678F6C26E582E40065D016 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		96787E5526E643660046CAA2 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		F9CDDFDF99760D068CA13C96 /* Pods-Data.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data.release.xcconfig"; path = "Target Support Files/Pods-Data/Pods-Data.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,12 +81,13 @@
 		96678F4626E514470065D016 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				96678F5526E514480065D016 /* Info.plist */,
 				96678F5B26E515CC0065D016 /* Other */,
 				96678F6726E5174A0065D016 /* Extensions */,
 				96678F5D26E515EB0065D016 /* Model */,
 				96678F5E26E515F80065D016 /* View */,
 				96678F5C26E515DF0065D016 /* Controllers */,
-				96678F5526E514480065D016 /* Info.plist */,
+				96787E5726E643C70046CAA2 /* NetworkComponents */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -116,9 +115,7 @@
 		96678F5D26E515EB0065D016 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				96678F5F26E516200065D016 /* Cell.swift */,
 				96678F6326E516860065D016 /* Networking.swift */,
-				96678F6526E5170B0065D016 /* Reacheability.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -126,7 +123,7 @@
 		96678F5E26E515F80065D016 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				96678F6126E5165A0065D016 /* ViewCell.swift */,
+				96678F5F26E516200065D016 /* Cell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -135,9 +132,17 @@
 			isa = PBXGroup;
 			children = (
 				96678F6826E5176B0065D016 /* UIView.swift */,
-				96678F6C26E582E40065D016 /* Network.swift */,
+				96678F6526E5170B0065D016 /* Reacheability.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		96787E5726E643C70046CAA2 /* NetworkComponents */ = {
+			isa = PBXGroup;
+			children = (
+				96787E5526E643660046CAA2 /* BaseRouter.swift */,
+			);
+			name = NetworkComponents;
 			sourceTree = "<group>";
 		};
 		A6F277AEA20D62E11C6A7181 /* Pods */ = {
@@ -262,7 +267,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96678F6D26E582E40065D016 /* Network.swift in Sources */,
 				96678F6B26E5180F0065D016 /* NoInternet.swift in Sources */,
 				96678F6926E5176B0065D016 /* UIView.swift in Sources */,
 				96678F4C26E514470065D016 /* ViewController.swift in Sources */,
@@ -271,7 +275,7 @@
 				96678F6426E516860065D016 /* Networking.swift in Sources */,
 				96678F6626E5170B0065D016 /* Reacheability.swift in Sources */,
 				96678F4A26E514470065D016 /* SceneDelegate.swift in Sources */,
-				96678F6226E5165A0065D016 /* ViewCell.swift in Sources */,
+				96787E5626E643660046CAA2 /* BaseRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +416,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W652FWVRGR;
 				INFOPLIST_FILE = Data/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -431,7 +437,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W652FWVRGR;
 				INFOPLIST_FILE = Data/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
