@@ -8,31 +8,34 @@
 import TTGTags
 import UIKit
 import Network
+import SnapKit
 
 class ViewController: UIViewController {
     
-    override func viewWillLayoutSubviews() {
-           }
-    
-    @objc func selectorX() { }
-
     weak var collectionView: UICollectionView!
     let reachability = try! Reachability()
 
     override func loadView() {
         super.loadView()
 
+        //check internet conection before fetching the data
+        monitorNetwork()
+        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         self.view.addSubview(collectionView)
-        collectionView.fillSuperView()
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         self.collectionView = collectionView
 
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         view.backgroundColor = UIColor.white
-//        monitorNetwork()
+        monitorNetwork()
         getMethod {
             self.collectionView.reloadData()
         }
@@ -50,6 +53,34 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         getMethod {
             self.collectionView.reloadData()
+        }
+    }
+    
+    //monitor network
+    func monitorNetwork() {
+        DispatchQueue.main.async {
+            self.reachability.whenReachable = { reachability in
+                if reachability.connection == .wifi {
+                    print("Reachable via WiFi")
+                } else {
+                    print("Reachable via Cellular")
+                }
+                self.view.window?.rootViewController?.dismiss(animated: true)
+            }
+            self.reachability.whenUnreachable = { _ in
+                print("Not reachable")
+
+                //showing vc which stands for network conection
+                let vc = NetworkErrorViewController()
+                vc.modalPresentationStyle = .automatic
+                self.present(vc, animated: true, completion: nil)
+            }
+
+            do {
+                try self.reachability.startNotifier()
+            } catch {
+                print("Unable to start notifier")
+            }
         }
     }
 }
@@ -112,33 +143,7 @@ extension ViewController: UICollectionViewDataSource {
         return newsPosts?.company.employees.count ?? 0
     }
     
-    //monitor network
-    func monitorNetwork() {
-        DispatchQueue.main.async {
-            self.reachability.whenReachable = { reachability in
-                if reachability.connection == .wifi {
-                    print("Reachable via WiFi")
-                } else {
-                    print("Reachable via Cellular")
-                }
-                self.view.window?.rootViewController?.dismiss(animated: true)
-            }
-            self.reachability.whenUnreachable = { _ in
-                print("Not reachable")
-
-                //showing vc which stands for network conection
-                let vc = NetworkErrorViewController()
-                vc.modalPresentationStyle = .automatic
-                self.present(vc, animated: true, completion: nil)
-            }
-
-            do {
-                try self.reachability.startNotifier()
-            } catch {
-                print("Unable to start notifier")
-            }
-        }
-    }
+    
 }
 
 
