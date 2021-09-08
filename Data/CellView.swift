@@ -23,13 +23,6 @@ class Cell: UICollectionViewCell {
         name.textAlignment = .left
         name.font = UIFont.boldSystemFont(ofSize: 20.0)
         name.textColor = .white
-        
-//        name.anchor(top: contentView.topAnchor,
-//                    leading: contentView.leadingAnchor,
-//                    bottom: phoneNumber.topAnchor,
-//                    trailing: contentView.trailingAnchor,
-//                    padding: .init(top: 40, left: 30, bottom: 0, right: -30), size: .init(width: contentView.frame.width-60, height: 16))
-
         name.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(30)
             make.bottom.equalTo(phoneNumber.snp.top)
@@ -40,32 +33,18 @@ class Cell: UICollectionViewCell {
         //phone numbers
         phoneNumber.textColor = .white
         phoneNumber.font = UIFont.italicSystemFont(ofSize: 10.0)
-//        phoneNumber.anchor(top: name.bottomAnchor,
-//                           leading: contentView.leadingAnchor,
-//                           bottom: collectionView.topAnchor,
-//                           trailing: contentView.trailingAnchor,
-//                           padding: .init(top: 0, left: 30, bottom: -20, right: -30), size: .init(width: contentView.frame.width-60, height: 14))
-       
         phoneNumber.snp.makeConstraints { make in
             make.top.equalTo(name.snp.bottom)
-            make.bottom.equalTo(collectionView.snp.top)
-            make.trailing.leading.equalToSuperview().offset(30)
+            make.bottom.equalTo(collectionView.snp.top).offset(-10)
+            make.leading.trailing.equalToSuperview().inset(30)
             make.height.equalTo(20)
         }
         
         //skills
-        collectionView.alignment = .fillByExpandingWidth
-//        collectionView.anchor(top: phoneNumber.bottomAnchor,
-//                           leading: contentView.leadingAnchor,
-//                           bottom: contentView.bottomAnchor,
-//                           trailing: contentView.trailingAnchor,
-//                           padding: .init(top: 0, left: 30, bottom: -10, right: -30))
-//
+        collectionView.alignment = .fillByExpandingWidthExceptLastLine
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(phoneNumber.snp.bottom)
             make.bottom.equalToSuperview().offset(10)
-            make.trailing.equalToSuperview().offset(-30)
-            make.leading.equalToSuperview().offset(30)
+            make.leading.trailing.equalToSuperview().inset(30)
         }
         
         self.phoneNumber = phoneNumber
@@ -78,3 +57,4 @@ class Cell: UICollectionViewCell {
     }
 
 }
+
