@@ -1,5 +1,4 @@
 import UIKit
-import SnapKit
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
 
@@ -28,5 +27,5 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 18
     }
-
+    
 }

@@ -4,12 +4,22 @@ import Network
 import SnapKit
 
 class ViewController: UIViewController {
+
+    private let networkService = NetworkService()
     
     let reachability = try! Reachability()
     
-    weak var collectionView: UICollectionView!
+    lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(Cell.self, forCellWithReuseIdentifier: Cell.identifier)
+        collectionView.alwaysBounceVertical = true
+        collectionView.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
+        return collectionView
+    }()
     
-    var screenTitle: UILabel = {
+    lazy var screenTitle: UILabel = {
         let label = UILabel()
         label.text = "👩🏻‍💻 Employees"
         label.textColor = UIColor.systemGreen
@@ -28,30 +38,10 @@ class ViewController: UIViewController {
         //check internet conection before fetching the data
         monitorNetwork()
         
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         self.view.addSubview(collectionView)
         self.view.addSubview(viewTitle)
         
-        viewTitle.addSubview(screenTitle)
-        viewTitle.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(60)
-        }
-        
-        screenTitle.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(30)
-            make.top.equalToSuperview().offset(20)
-            make.bottom.equalToSuperview().offset(-20)
-        }
-        
-        collectionView.snp.makeConstraints { make in
-            make.top.equalTo(viewTitle.snp.bottom)
-            make.bottom.trailing.leading.equalToSuperview()
-        }
-
-        self.collectionView = collectionView
-
+        setupConstraints()
     }
 
     override func viewDidLoad() {
@@ -59,26 +49,36 @@ class ViewController: UIViewController {
         
         view.backgroundColor = UIColor.white
         monitorNetwork()
-        getMethod {
-            self.collectionView.reloadData()
-        }
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
-        self.collectionView.register(Cell.self, forCellWithReuseIdentifier: Cell.identifier)
-        self.collectionView.alwaysBounceVertical = true
-        self.collectionView.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
+        getPosts()
+    }
+    
+    private func getPosts() {
         
+        networkService.sendRequest(
+            urlRequest: MainController.getAllPosts.getURLRequest(),
+            successModel: Welcome.self
+        ) { [weak self] response in
+            guard let self = self else {return}
+            switch response {
+            case .success(let model):
+                dump(model)
+                
+                newsPosts = model
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            case .badRequest(let model):
+                dump(model)
+            case .failure(let message):
+                print(message)
+            }
+        }
     }
     
     deinit {
         reachability.stopNotifier()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        getMethod {
-            self.collectionView.reloadData()
-        }
-    }
+
     
     //monitor network
     func monitorNetwork() {
@@ -107,7 +107,32 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    func setupConstraints() {
+        viewTitle.addSubview(screenTitle)
+        viewTitle.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(60)
+        }
+        
+        screenTitle.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.top.equalToSuperview().offset(20)
+            make.bottom.equalToSuperview().offset(-20)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(viewTitle.snp.bottom)
+            make.bottom.trailing.leading.equalToSuperview()
+        }
+    }
 }
 
 
 
+extension Encodable {
+    func toData() -> Data {
+        (try? JSONEncoder().encode(self)) ?? Data()
+    }
+}

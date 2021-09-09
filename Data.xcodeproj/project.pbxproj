@@ -11,6 +11,7 @@
 		9606144026E89EEB0067D5F8 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606143F26E89EEB0067D5F8 /* ViewModel.swift */; };
 		9606144226E8A0640067D5F8 /* VC-extension-FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606144126E8A0640067D5F8 /* VC-extension-FlowLayout.swift */; };
 		9606144426E8A0B00067D5F8 /* VC-extension-DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606144326E8A0B00067D5F8 /* VC-extension-DataSource.swift */; };
+		9606144626E94EEF0067D5F8 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606144526E94EEF0067D5F8 /* Cache.swift */; };
 		96678F4826E514470065D016 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96678F4726E514470065D016 /* AppDelegate.swift */; };
 		96678F4A26E514470065D016 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96678F4926E514470065D016 /* SceneDelegate.swift */; };
 		96678F4C26E514470065D016 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96678F4B26E514470065D016 /* ViewController.swift */; };
@@ -19,7 +20,12 @@
 		96678F6026E516200065D016 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96678F5F26E516200065D016 /* CellView.swift */; };
 		96678F6626E5170B0065D016 /* Reacheability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96678F6526E5170B0065D016 /* Reacheability.swift */; };
 		96678F6B26E5180F0065D016 /* NoInternet-VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96678F6A26E5180F0065D016 /* NoInternet-VC.swift */; };
-		96787E5626E643660046CAA2 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96787E5526E643660046CAA2 /* BaseRouter.swift */; };
+		96C0968926E9569F00777D66 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0968626E9569F00777D66 /* MainController.swift */; };
+		96C0968A26E9569F00777D66 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0968726E9569F00777D66 /* NetworkService.swift */; };
+		96C0968B26E9569F00777D66 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0968826E9569F00777D66 /* BaseRouter.swift */; };
+		96C0968D26E956A600777D66 /* JSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0968C26E956A600777D66 /* JSONModel.swift */; };
+		96C0969026E956AF00777D66 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0968E26E956AF00777D66 /* NetworkErrors.swift */; };
+		96C0969126E956AF00777D66 /* ProResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0968F26E956AF00777D66 /* ProResult.swift */; };
 		C722C346785E96FDEFBC27B0 /* Pods_Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 597607528978FC04522DFAC7 /* Pods_Data.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +36,7 @@
 		9606143F26E89EEB0067D5F8 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		9606144126E8A0640067D5F8 /* VC-extension-FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC-extension-FlowLayout.swift"; sourceTree = "<group>"; };
 		9606144326E8A0B00067D5F8 /* VC-extension-DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC-extension-DataSource.swift"; sourceTree = "<group>"; };
+		9606144526E94EEF0067D5F8 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		96678F4426E514470065D016 /* Data.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Data.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96678F4726E514470065D016 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96678F4926E514470065D016 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,7 +47,12 @@
 		96678F5F26E516200065D016 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		96678F6526E5170B0065D016 /* Reacheability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reacheability.swift; sourceTree = "<group>"; };
 		96678F6A26E5180F0065D016 /* NoInternet-VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoInternet-VC.swift"; sourceTree = "<group>"; };
-		96787E5526E643660046CAA2 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
+		96C0968626E9569F00777D66 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		96C0968726E9569F00777D66 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		96C0968826E9569F00777D66 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
+		96C0968C26E956A600777D66 /* JSONModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONModel.swift; sourceTree = "<group>"; };
+		96C0968E26E956AF00777D66 /* NetworkErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
+		96C0968F26E956AF00777D66 /* ProResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProResult.swift; sourceTree = "<group>"; };
 		F9CDDFDF99760D068CA13C96 /* Pods-Data.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data.release.xcconfig"; path = "Target Support Files/Pods-Data/Pods-Data.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +134,7 @@
 				9606144126E8A0640067D5F8 /* VC-extension-FlowLayout.swift */,
 				9606144326E8A0B00067D5F8 /* VC-extension-DataSource.swift */,
 				96678F6A26E5180F0065D016 /* NoInternet-VC.swift */,
+				9606144526E94EEF0067D5F8 /* Cache.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -145,8 +158,13 @@
 		96787E5726E643C70046CAA2 /* NetworkComponents */ = {
 			isa = PBXGroup;
 			children = (
-				96787E5526E643660046CAA2 /* BaseRouter.swift */,
+				96C0968826E9569F00777D66 /* BaseRouter.swift */,
+				96C0968626E9569F00777D66 /* MainController.swift */,
+				96C0968726E9569F00777D66 /* NetworkService.swift */,
 				96678F6526E5170B0065D016 /* Reacheability.swift */,
+				96C0968C26E956A600777D66 /* JSONModel.swift */,
+				96C0968E26E956AF00777D66 /* NetworkErrors.swift */,
+				96C0968F26E956AF00777D66 /* ProResult.swift */,
 			);
 			name = NetworkComponents;
 			sourceTree = "<group>";
@@ -277,13 +295,19 @@
 				9606143C26E890F60067D5F8 /* DataModel.swift in Sources */,
 				9606144426E8A0B00067D5F8 /* VC-extension-DataSource.swift in Sources */,
 				9606144026E89EEB0067D5F8 /* ViewModel.swift in Sources */,
+				96C0968926E9569F00777D66 /* MainController.swift in Sources */,
+				96C0969026E956AF00777D66 /* NetworkErrors.swift in Sources */,
+				96C0968D26E956A600777D66 /* JSONModel.swift in Sources */,
 				96678F4C26E514470065D016 /* ViewController.swift in Sources */,
 				96678F6026E516200065D016 /* CellView.swift in Sources */,
 				96678F4826E514470065D016 /* AppDelegate.swift in Sources */,
+				96C0969126E956AF00777D66 /* ProResult.swift in Sources */,
 				96678F6626E5170B0065D016 /* Reacheability.swift in Sources */,
+				96C0968B26E9569F00777D66 /* BaseRouter.swift in Sources */,
 				96678F4A26E514470065D016 /* SceneDelegate.swift in Sources */,
 				9606144226E8A0640067D5F8 /* VC-extension-FlowLayout.swift in Sources */,
-				96787E5626E643660046CAA2 /* BaseRouter.swift in Sources */,
+				96C0968A26E9569F00777D66 /* NetworkService.swift in Sources */,
+				9606144626E94EEF0067D5F8 /* Cache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

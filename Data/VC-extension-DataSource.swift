@@ -30,10 +30,10 @@ extension ViewController: UICollectionViewDataSource {
         let data = newsPosts?.company.employees.sorted { $0.name < $1.name }[indexPath.item]
         
         //phone number
-        if let phone = data?.phone_number { cell.phoneNumber?.text = "Phone number: \(phone)" }
+        if let phone = data?.phone_number { cell.phoneNumber.text = "Phone number: \(phone)" }
         
         //names
-        cell.name?.text = data?.name
+        cell.name.text = data?.name
 
         // skills
         if let skills = data?.skills {

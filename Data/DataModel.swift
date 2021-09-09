@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Data
-struct Data: Codable{
+struct Welcome: Codable{
     let company: Company
 }
 
@@ -19,7 +19,7 @@ struct Company: Codable {
 }
 
 // MARK: - Employee
-struct Employee: Codable {
+struct Employee: Codable, Hashable {
     let name, phone_number: String
     let skills: [String]
 }
