@@ -1,9 +1,3 @@
-//
-//  NoInternet.swift
-//  Avito_Intern
-//
-//  Created by siuzanna on 5/9/21.
-//
 
 import UIKit
 import Network

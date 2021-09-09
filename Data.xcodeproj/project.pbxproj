@@ -23,7 +23,6 @@
 		96C0968926E9569F00777D66 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0968626E9569F00777D66 /* MainController.swift */; };
 		96C0968A26E9569F00777D66 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0968726E9569F00777D66 /* NetworkService.swift */; };
 		96C0968B26E9569F00777D66 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0968826E9569F00777D66 /* BaseRouter.swift */; };
-		96C0968D26E956A600777D66 /* JSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0968C26E956A600777D66 /* JSONModel.swift */; };
 		96C0969026E956AF00777D66 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0968E26E956AF00777D66 /* NetworkErrors.swift */; };
 		96C0969126E956AF00777D66 /* ProResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0968F26E956AF00777D66 /* ProResult.swift */; };
 		C722C346785E96FDEFBC27B0 /* Pods_Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 597607528978FC04522DFAC7 /* Pods_Data.framework */; };
@@ -50,7 +49,6 @@
 		96C0968626E9569F00777D66 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		96C0968726E9569F00777D66 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		96C0968826E9569F00777D66 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
-		96C0968C26E956A600777D66 /* JSONModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONModel.swift; sourceTree = "<group>"; };
 		96C0968E26E956AF00777D66 /* NetworkErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
 		96C0968F26E956AF00777D66 /* ProResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProResult.swift; sourceTree = "<group>"; };
 		F9CDDFDF99760D068CA13C96 /* Pods-Data.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data.release.xcconfig"; path = "Target Support Files/Pods-Data/Pods-Data.release.xcconfig"; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 				96C0968626E9569F00777D66 /* MainController.swift */,
 				96C0968726E9569F00777D66 /* NetworkService.swift */,
 				96678F6526E5170B0065D016 /* Reacheability.swift */,
-				96C0968C26E956A600777D66 /* JSONModel.swift */,
 				96C0968E26E956AF00777D66 /* NetworkErrors.swift */,
 				96C0968F26E956AF00777D66 /* ProResult.swift */,
 			);
@@ -297,7 +294,6 @@
 				9606144026E89EEB0067D5F8 /* ViewModel.swift in Sources */,
 				96C0968926E9569F00777D66 /* MainController.swift in Sources */,
 				96C0969026E956AF00777D66 /* NetworkErrors.swift in Sources */,
-				96C0968D26E956A600777D66 /* JSONModel.swift in Sources */,
 				96678F4C26E514470065D016 /* ViewController.swift in Sources */,
 				96678F6026E516200065D016 /* CellView.swift in Sources */,
 				96678F4826E514470065D016 /* AppDelegate.swift in Sources */,

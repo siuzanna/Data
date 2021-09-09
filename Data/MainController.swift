@@ -1,9 +1,3 @@
-//
-//  MainController.swift
-//  Test
-//
-//  Created by Фатихсултан Жакшылыков on 3/9/21.
-//
 
 import Foundation
 

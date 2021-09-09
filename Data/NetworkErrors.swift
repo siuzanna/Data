@@ -1,9 +1,3 @@
-//
-//  NetworkErrors.swift
-//  Test
-//
-//  Created by Фатихсултан Жакшылыков on 8/9/21.
-//
 
 import Foundation
 
