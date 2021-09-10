@@ -1,15 +1,14 @@
 import UIKit
 import TTGTags
-import Network
 import SnapKit
 
 class ViewController: UIViewController {
-
+    
+    private let cache = Cache<String, JSON>()
     private let networkService = NetworkService()
+    private let reachability = try! Reachability()
     
-    let reachability = try! Reachability()
-    
-    lazy var collectionView: UICollectionView = {
+    lazy var skillsCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -19,7 +18,7 @@ class ViewController: UIViewController {
         return collectionView
     }()
     
-    lazy var screenTitle: UILabel = {
+    private lazy var screenTitle: UILabel = {
         let label = UILabel()
         label.text = "👩🏻‍💻 Employees"
         label.textColor = UIColor.systemGreen
@@ -29,48 +28,47 @@ class ViewController: UIViewController {
         return label
     }()
     
-    var viewTitle = UIView()
-    
-    
-    override func loadView() {
-        super.loadView()
-
-        //check internet conection before fetching the data
-        monitorNetwork()
-        
-        self.view.addSubview(collectionView)
-        self.view.addSubview(viewTitle)
-        
-        setupConstraints()
-    }
+    private lazy var viewTitle = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.addSubview(skillsCollectionView)
+        self.view.addSubview(viewTitle)
         view.backgroundColor = UIColor.white
+        setupConstraints()
         monitorNetwork()
         getPosts()
     }
-    
+     
+    //request
     private func getPosts() {
-        
-        networkService.sendRequest(
-            urlRequest: MainController.getAllPosts.getURLRequest(),
-            successModel: Welcome.self
-        ) { [weak self] response in
-            guard let self = self else {return}
-            switch response {
-            case .success(let model):
-                dump(model)
-                
-                newsPosts = model
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
+        if let employee = self.cache.value(forKey: "JSON")  {
+            DataToDisplay = employee
+            DispatchQueue.main.async {
+                self.skillsCollectionView.reloadData()
+            }
+        }else {
+            networkService.sendRequest(
+                urlRequest: MainController.getAllPosts.getURLRequest(),
+                successModel: JSON.self
+            ) { [weak self] response in
+                guard let self = self else {return}
+                switch response {
+                case .success(let model):
+                    self.cache.insert(model, forKey: "JSON")
+                        if let employee = self.cache.value(forKey: "JSON"){
+                        DataToDisplay = employee
+                        print(employee)
+                    }
+                    DispatchQueue.main.async {
+                        self.skillsCollectionView.reloadData()
+                    }
+                    print("Request")
+                case .badRequest(let model):
+                    dump(model)
+                case .failure(let message):
+                    print(message)
                 }
-            case .badRequest(let model):
-                dump(model)
-            case .failure(let message):
-                print(message)
             }
         }
     }
@@ -78,8 +76,7 @@ class ViewController: UIViewController {
     deinit {
         reachability.stopNotifier()
     }
-
-    
+ 
     //monitor network
     func monitorNetwork() {
         DispatchQueue.main.async {
@@ -89,6 +86,8 @@ class ViewController: UIViewController {
                 } else {
                     print("Reachable via Cellular")
                 }
+                print("Online mode")
+                // Code to execute when connected
                 self.view.window?.rootViewController?.dismiss(animated: true)
             }
             self.reachability.whenUnreachable = { _ in
@@ -108,6 +107,7 @@ class ViewController: UIViewController {
         }
     }
     
+    //Auto Layout
     func setupConstraints() {
         viewTitle.addSubview(screenTitle)
         viewTitle.snp.makeConstraints { make in
@@ -122,15 +122,14 @@ class ViewController: UIViewController {
             make.bottom.equalToSuperview().offset(-20)
         }
         
-        collectionView.snp.makeConstraints { make in
+        skillsCollectionView.snp.makeConstraints { make in
             make.top.equalTo(viewTitle.snp.bottom)
             make.bottom.trailing.leading.equalToSuperview()
         }
     }
 }
 
-
-
+ 
 extension Encodable {
     func toData() -> Data {
         (try? JSONEncoder().encode(self)) ?? Data()

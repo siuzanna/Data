@@ -5,7 +5,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     //resizes when device rotates
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        self.collectionView.collectionViewLayout.invalidateLayout()
+        self.skillsCollectionView.collectionViewLayout.invalidateLayout()
     }
     
     //padding
@@ -15,9 +15,9 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 30, left: .zero, bottom: 30, right: .zero)
     }
 
-    //width & height
+    //width & height 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = (collectionView.frame.size.width - 30) / 1.2
+        let size = (collectionView.frame.size.width * 0.75)
         return CGSize(width: size, height: 150)
     }
 
@@ -25,7 +25,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 18
+        return 15
     }
     
 }

@@ -14,8 +14,8 @@ extension ViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        //check internet conection before fetching the data
-        monitorNetwork()
+        //sorting employees by alphabet
+        let data = DataToDisplay?.company.employees.sorted { $0.name < $1.name }[indexPath.item]
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.identifier, for: indexPath) as! Cell
         //styling the cell
@@ -26,15 +26,12 @@ extension ViewController: UICollectionViewDataSource {
         cell.layer.shadowRadius = 10
         cell.layer.shadowColor = UIColor(red: 44.0/255.0, green: 62.0/255.0, blue: 80.0/255.0, alpha: 1.0).cgColor
         
-        //sorting employees by alphabet
-        let data = newsPosts?.company.employees.sorted { $0.name < $1.name }[indexPath.item]
-        
         //phone number
         if let phone = data?.phone_number { cell.phoneNumber.text = "Phone number: \(phone)" }
         
         //names
-        cell.name.text = data?.name
-
+        if let name = data?.name { cell.name.text = name }
+       
         // skills
         if let skills = data?.skills {
             cell.collectionView.removeAllTags()
@@ -56,6 +53,7 @@ extension ViewController: UICollectionViewDataSource {
                 tag.style = normalStyle
                 tag.selectedStyle = selectedStyle
                 
+                //each skill we modifying using TTGTags and than addind them to collectionView
                 cell.collectionView.addTag(tag)
             }
         }
@@ -65,7 +63,7 @@ extension ViewController: UICollectionViewDataSource {
     
     // cells count
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return newsPosts?.company.employees.count ?? 0
+        return DataToDisplay?.company.employees.count ?? 0
     }
 }
 

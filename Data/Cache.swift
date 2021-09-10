@@ -1,4 +1,6 @@
+
 import UIKit
+
 
 // According to article by John Sundell
 // https://www.swiftbysundell.com/articles/caching-in-swift/
@@ -10,7 +12,7 @@ final class Cache<Key: Hashable, Value> {
     private let keyTracker = KeyTracker()
     
     init(dateProvider: @escaping () -> Date = Date.init,
-         entryLifetime: TimeInterval = 1 * 60 * 60,
+         entryLifetime: TimeInterval = 2 * 60 * 60,
          maximumEntryCount: Int = 50) {
         self.dateProvider = dateProvider
         self.entryLifetime = entryLifetime
